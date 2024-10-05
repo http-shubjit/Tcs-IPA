@@ -161,8 +161,8 @@
 //                price[i] = footwears[i].price;
 //            }
 //            Arrays.sort(price);
-//            int second=price[0];
-//            for (int i = 0; i < price.length; i++) {
+//            int second=price[footwears.length-1];
+//            for (int i = price.length; i >=0 ; i--) {
 //                if (second != price[i]) {
 //                    second = price[i];
 //                    break;
