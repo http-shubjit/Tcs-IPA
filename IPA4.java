@@ -173,3 +173,95 @@
 // address-delhi
 
 // pincode-687945
+
+import java.util.Scanner;
+
+class Solution {
+    public static void main(String[] args) {
+Scanner sc=new Scanner(System.in);
+        IPA4[] colleges = new IPA4[5];
+        for (int i = 0; i < colleges.length; i++) {
+             int id=sc.nextInt();
+             String name = sc.next();
+             int contactNo=sc.nextInt();
+             String address=sc.next();
+             int pinCode = sc.nextInt();
+             colleges[i] = new IPA4(id, name, contactNo, address, pinCode);
+        }
+
+        // findCollegeWithMaximumPincode();
+
+// searchCollegeByAddress()
+    }
+}
+
+ class IPA4 {
+    // Attributes
+    private int id;
+    private String name;
+    private int contactNo;
+    private String address;
+    private int pinCode;
+
+    // Constructor
+    public IPA4(int id, String name, int contactNo, String address, int pinCode) {
+        this.id = id;
+        this.name = name;
+        this.contactNo = contactNo;
+        this.address = address;
+        this.pinCode = pinCode;
+    }
+
+    // Getter and Setter methods
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getContactNo() {
+        return contactNo;
+    }
+
+    public void setContactNo(int contactNo) {
+        this.contactNo = contactNo;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getPinCode() {
+        return pinCode;
+    }
+
+    public void setPinCode(int pinCode) {
+        this.pinCode = pinCode;
+    }
+
+    // toString method for easy representation
+    @Override
+    public String toString() {
+        return "College{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", contactNo=" + contactNo +
+                ", address='" + address + '\'' +
+                ", pinCode=" + pinCode +
+                '}';
+    }
+}
