@@ -70,7 +70,6 @@
 // // 90
 // // true
 
-
 // // Output:
 // // 2
 // // 1002#Preeti#70.0
@@ -79,10 +78,9 @@
 // import java.util.Scanner;
 
 // class Solution {
-    
+
 //     public static void main(String[] args) {
-       
-    
+
 //         Student[] students = new Student[3];
 //         Scanner sc=new Scanner(System.in);
 //         for (int i = 0; i < students.length; i++) {
@@ -95,26 +93,20 @@
 
 //         }
 
-
 //      int res= findCountOfDayscholarStudents(students);
 //        Student res2= findStudentwithSecondHighestScore(students);
-
 
 //     }
 
 //     private static Student findStudentwithSecondHighestScore(Student[] students) {
-       
-        
 
 //         double[] score = new double[students.length];
-
 
 //         for (int i = 0; i < students.length; i++) {
 //             score[i] = students[i].score;
 //         }
 //         Arrays.sort(score);
-        
-        
+
 //       double second=score[students.length-1];
 //       for (int i = students.length; i >= 0; i--) {
 //           if (score[i] != second) {
@@ -122,7 +114,7 @@
 //               break;
 //           }
 //       }
- 
+
 //       for (int i = 0; i < students.length; i++) {
 //           if (second == students[i].score && !students[i].dayScholar) {
 //               return students[i];
@@ -130,7 +122,6 @@
 
 //       }
 //       return null; 
-
 
 //     }
 
@@ -142,13 +133,11 @@
 //         }
 //         return count;
 //     }
-    
+
 // }
 
-
-
 // class Student {
-    
+
 //      int rollNo;
 //      String name;
 //      String branch;
@@ -161,5 +150,23 @@
 //         this.branch = branch;
 //         this.score = score;
 //         this.dayScholar = dayScholar;
+//     }
+// }
+
+
+// find Second Largest num 
+
+// int f = Integer.MIN_VALUE;
+// int s = Integer.MIN_VALUE;
+
+// for(int i=0;i<arr.length;i++){
+//     if(f<arr[i])
+//     { 
+//     s=f;
+//     f=arr[i];
+
+//     }
+//     else if(f>arr[i] && s<arr[i]){
+// s=arr[i];
 //     }
 // }

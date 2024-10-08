@@ -179,23 +179,49 @@ import java.util.Scanner;
 class Solution {
     public static void main(String[] args) {
 Scanner sc=new Scanner(System.in);
-        IPA4[] colleges = new IPA4[5];
+        College[] colleges = new College[5];
         for (int i = 0; i < colleges.length; i++) {
              int id=sc.nextInt();
              String name = sc.next();
              int contactNo=sc.nextInt();
              String address=sc.next();
              int pinCode = sc.nextInt();
-             colleges[i] = new IPA4(id, name, contactNo, address, pinCode);
+             colleges[i] = new College(id, name, contactNo, address, pinCode);
         }
 
-        // findCollegeWithMaximumPincode();
+       College pin= findCollegeWithMaximumPincode(colleges);
+ String address = sc.nextLine();
+ College addr = searchCollegeByAddress(colleges, address);
+    }
 
-// searchCollegeByAddress()
+    private static College searchCollegeByAddress(College[] colleges, String address) {
+       
+        for (int i = 0; i < colleges.length; i++) {
+            if (colleges[i].getAddress().equalsIgnoreCase(address))
+                return colleges[i];
+        }
+        return null;
+
+    }
+
+    private static College findCollegeWithMaximumPincode(College[] colleges) {
+        int max = 0;        
+        for (int i = 0; i < colleges.length; i++) {
+            if (colleges[i].getPinCode() > max) {
+                max = colleges[i].getPinCode();
+            }
+        }
+        for (int i = 0; i < colleges.length; i++) {
+            if (colleges[i].getPinCode() == max) {
+                return colleges[i];
+            }
+        }
+        return null;
+    
     }
 }
 
- class IPA4 {
+ class College {
     // Attributes
     private int id;
     private String name;
@@ -204,7 +230,7 @@ Scanner sc=new Scanner(System.in);
     private int pinCode;
 
     // Constructor
-    public IPA4(int id, String name, int contactNo, String address, int pinCode) {
+    public College(int id, String name, int contactNo, String address, int pinCode) {
         this.id = id;
         this.name = name;
         this.contactNo = contactNo;
