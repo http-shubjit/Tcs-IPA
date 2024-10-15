@@ -1,4 +1,4 @@
-// Create a class College with the below attributes.
+// Create a class IPA4 with the below attributes.
 
 //  id-int 
 
@@ -22,49 +22,49 @@
 
 // Implement the two static methods:
 
-//  1.findCollegeWithMaximumPincode 
+//  1.findIPA4WithMaximumPincode 
 
-//  2.searchCollegeByAddress
+//  2.searchIPA4ByAddress
 
 
 
-// findCollegeWithMaximumPincode method:
+// findIPA4WithMaximumPincode method:
 
 //    Create the Static method in the Solution Class.
 
-//  This method will take array of the College objects and return the 
+//  This method will take array of the IPA4 objects and return the 
 
-// College object having maximum pincode if found else return null if not 
+// IPA4 object having maximum pincode if found else return null if not 
 
 // found.
 
-//    for this method ,main method will print College object with maximum
+//    for this method ,main method will print IPA4 object with maximum
 
 // pincode if the returned value is not null.if the returned value is null ,
 
 
-// then the main method will print "No college found with mentioned attribute".
+// then the main method will print "No IPA4 found with mentioned attribute".
 
 
 
 
 
-// searchCollegeByAddress method:
+// searchIPA4ByAddress method:
 
 //    Create the Static method in the Solution Class.
 
-// This method will take array of College objects as input and address as 
+// This method will take array of IPA4 objects as input and address as 
 
-// input and return College object having the mentioned address if found 
+// input and return IPA4 object having the mentioned address if found 
 
 // else return null if not found.
 
-//    for this method main method will print College object details as it is ,
+//    for this method main method will print IPA4 object details as it is ,
 
 //  if the returned value is not null.if the returned value is null then ,
 
 
-// main method will print "No college found with mentioned attribute".
+// main method will print "No IPA4 found with mentioned attribute".
 
 
  
@@ -179,41 +179,41 @@ import java.util.Scanner;
 class Solution {
     public static void main(String[] args) {
 Scanner sc=new Scanner(System.in);
-        College[] colleges = new College[5];
-        for (int i = 0; i < colleges.length; i++) {
+        IPA4[] IPA4s = new IPA4[5];
+        for (int i = 0; i < IPA4s.length; i++) {
              int id=sc.nextInt();
              String name = sc.next();
              int contactNo=sc.nextInt();
              String address=sc.next();
              int pinCode = sc.nextInt();
-             colleges[i] = new College(id, name, contactNo, address, pinCode);
+             IPA4s[i] = new IPA4(id, name, contactNo, address, pinCode);
         }
 
-       College pin= findCollegeWithMaximumPincode(colleges);
+       IPA4 pin= findIPA4WithMaximumPincode(IPA4s);
  String address = sc.nextLine();
- College addr = searchCollegeByAddress(colleges, address);
+ IPA4 addr = searchIPA4ByAddress(IPA4s, address);
     }
 
-    private static College searchCollegeByAddress(College[] colleges, String address) {
+    private static IPA4 searchIPA4ByAddress(IPA4[] IPA4s, String address) {
        
-        for (int i = 0; i < colleges.length; i++) {
-            if (colleges[i].getAddress().equalsIgnoreCase(address))
-                return colleges[i];
+        for (int i = 0; i < IPA4s.length; i++) {
+            if (IPA4s[i].getAddress().equalsIgnoreCase(address))
+                return IPA4s[i];
         }
         return null;
 
     }
 
-    private static College findCollegeWithMaximumPincode(College[] colleges) {
+    private static IPA4 findIPA4WithMaximumPincode(IPA4[] IPA4s) {
         int max = 0;        
-        for (int i = 0; i < colleges.length; i++) {
-            if (colleges[i].getPinCode() > max) {
-                max = colleges[i].getPinCode();
+        for (int i = 0; i < IPA4s.length; i++) {
+            if (IPA4s[i].getPinCode() > max) {
+                max = IPA4s[i].getPinCode();
             }
         }
-        for (int i = 0; i < colleges.length; i++) {
-            if (colleges[i].getPinCode() == max) {
-                return colleges[i];
+        for (int i = 0; i < IPA4s.length; i++) {
+            if (IPA4s[i].getPinCode() == max) {
+                return IPA4s[i];
             }
         }
         return null;
@@ -221,7 +221,7 @@ Scanner sc=new Scanner(System.in);
     }
 }
 
- class College {
+ public class IPA4 {
     // Attributes
     private int id;
     private String name;
@@ -230,7 +230,7 @@ Scanner sc=new Scanner(System.in);
     private int pinCode;
 
     // Constructor
-    public College(int id, String name, int contactNo, String address, int pinCode) {
+    public IPA4(int id, String name, int contactNo, String address, int pinCode) {
         this.id = id;
         this.name = name;
         this.contactNo = contactNo;
@@ -282,7 +282,7 @@ Scanner sc=new Scanner(System.in);
     // toString method for easy representation
     @Override
     public String toString() {
-        return "College{" +
+        return "IPA4{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", contactNo=" + contactNo +
