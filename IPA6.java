@@ -82,7 +82,8 @@ class Solution {
         } 
 
 String facility=sc.next();
-       int res= totalNoOfRoomsBooked(motels,facility);
+int res = totalNoOfRoomsBooked(motels, facility);
+       sc.close();
 
     }
 

@@ -170,7 +170,7 @@ for (int i = 0; i < sim.length; i++) {
     System.out.println("RPS: " + sim[i].getRps());
     System.out.println("C: " + sim[i].getC());
 }
-
+sc.close();
     }
 
     private static IPA7[] transferCustomerCircle(IPA7[] sims, String cir1, String cir2) {

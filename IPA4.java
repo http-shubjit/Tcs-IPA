@@ -192,6 +192,7 @@ Scanner sc=new Scanner(System.in);
        IPA4 pin= findIPA4WithMaximumPincode(IPA4s);
  String address = sc.nextLine();
  IPA4 addr = searchIPA4ByAddress(IPA4s, address);
+ sc.close();
     }
 
     private static IPA4 searchIPA4ByAddress(IPA4[] IPA4s, String address) {
