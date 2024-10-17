@@ -189,9 +189,11 @@ Scanner sc=new Scanner(System.in);
              IPA4s[i] = new IPA4(id, name, contactNo, address, pinCode);
         }
 
-       IPA4 pin= findIPA4WithMaximumPincode(IPA4s);
+        IPA4 pin = findIPA4WithMaximumPincode(IPA4s);
+       System.out.println(pin);
  String address = sc.nextLine();
  IPA4 addr = searchIPA4ByAddress(IPA4s, address);
+ System.out.println(addr);
  sc.close();
     }
 

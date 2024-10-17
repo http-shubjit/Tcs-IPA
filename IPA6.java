@@ -1,170 +1,272 @@
-// Create a class Motel with the below attributes:
+// Create a class Sim with below attributes:
 
-// motelId - int
-// motelName - String
-// dateOfBooking – String (in the format dd-mon-yyyy)
-// noOfRoomsBooked – int
-// cabFacility – String
-// totalBill- double
 
-// Restricted for circulation outside TCS Xplore 6
-// The above attributes should be private, write getters, setters and parameterized constructor as 
-// required.
-// Create class Solution with main method.
-// Implement one static method – totalNoOfRoomsBooked in Solution class.
-// totalNoOfRoomsBooked method:
-// This method will take two input parameter - array of Motel objects and a String parameter.
-// The method will return the total numbers of rooms booked from array of Motel objects if the cab facility 
-// attribute matches with the given String parameter(cab facility) and the number of rooms booked is 
-// greater than 5.
-// If no rooms are booked with the above criteria in the array of Motel objects, then the method should 
-// return 0.
-// Note :
-// No two Motel object would have the same motelId.
-// dateOfBooking is stored in the format dd-mon-yyyy(eg. 01-Jan-2022)
-// The above mentioned static method should be called from the main method.
-// For totalNoOfRoomsBooked method - The main method should print the total number of booked rooms 
-// as it is, if the returned value is greater than 0, else it
-// should print "No such rooms booked"
-// Before calling these static methods in main, use Scanner object to read the values of four Motel objects 
-// referring attributes in the above mentioned attribute sequence.
-// Next, read the value of one String parameter for capturing the cab facility
 
-// Input
-// ___________
-// 1001
-// M&M
-// 01-Dec-2022
-// 5
-// Yes
-// 30000
-// 1002
-// BestStay
-// 10-Jan-2022
+// simId - int
+
+// customerName - String
+
+// balance - double
+
+// ratePerSecond - double
+
+// circle - String
+
+
+
+// Write getters, setters and parameterized constructor as required. 
+
+
+
+// Public class Solution is already created with main method.
+
+
+// Code inside main method should not be altered else your solution might be 
+
+
+// scored as zero.You may copy the code from main method in eclipse to 
+
+// verify your implementation. 
+
+
+
+
+
+// Implement static method - transferCustomerCircle in Solution class.
+
+// This method will take first parameter as array of Sim class objects, 
+
+// second parameter as circle to be transferred (which is String parameter 
+
+// circle1) and third parameter as new circle (which is String parameter 
+
+// circle2).
+
+
+
+// Method will transfer the customer to new circle (circle2), where the
+
+//  circle attribute would match second parameter (circle1). 
+
+
+// Method will return array of Sim objects for which circle is transferred.
+
+
+//  Return array should be sorted in descending order of ratePerSecond
+
+//  (assuming ratePerSecond is not same for any of the Sim objects).
+
+
+
+
+
+// This method should be called from main method and display the simId,
+
+// customerName,circle and ratePerSecond of returned objects 
+
+// (as per sample output).
+
+
+
+// Main method mentioned above already has Scanner code to read values, 
+
+// create objects and test above methods. Hence do not modify it.
+
+
+
+
+
+
+// ************************************************************************
+
+
+
+// Consider below sample input and output:
+
+
+
+// Input:
+
+// 1
+// raj
+// 100
+// 1.5
+// KOL
+// 2
+// chetan
+// 200
+// 1.6
+// AHD
 // 3
-// Yes
-// 27000
-// 1003
-// Novatel
-// 11-Jun-2022
+// asha
+// 150
+// 1.7
+// MUM
+// 4
+// kiran
+// 50
+// 2.2
+// AHD
 // 5
-// Yes
-// 25000
-// 1004
-// Chola
-// 01-Sep-2022
-// 7
-// Yes
-// 72000
-// Yes
-// ___________
-// OutPut
-// ___________
-// 7
+// vijay
+// 130
+// 1.8
+// AHD
+// AHD
+// KOL
 
-import java.text.SimpleDateFormat;
+
+
+// Output:
+
+// 4 kiran KOL 2.2
+
+// 5 vijay KOL 1.8
+
+// 2 chetan KOL 1.6
+
 import java.util.Scanner;
 
-class Solution {
+ class Solution {
     public static void main(String[] args) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy");
         Scanner sc = new Scanner(System.in);
+        IPA6[] sims = new IPA6[4];
+        for (int i = 0; i < sims.length; i++) {
+           
 
-        IPA6[] motels = new IPA6[5]; 
-        for (int i = 0; i < motels.length; i++) {
-             int motelId=sc.nextInt();
-             String motelName=sc.next();
-             String dateOfBooking=sc.next(); // Format: dd-mon-yyyy
-             int noOfRoomsBooked=sc.nextInt();
-             String cabFacility=sc.next();
-             double totalBill = sc.nextDouble();
-             motels[i] = new IPA6(motelId, motelName, dateOfBooking, noOfRoomsBooked, cabFacility, totalBill);
-        } 
+    System.out.print("Enter Sim ID (integer): ");
+    int id = sc.nextInt();
+    sc.nextLine(); // Consume the newline character
 
-String facility=sc.next();
-int res = totalNoOfRoomsBooked(motels, facility);
-       sc.close();
+    // Prompt for customerName - String
+    System.out.print("Enter Customer Name (String): ");
+    String cn = sc.nextLine(); // Use nextLine() to capture full name
 
+    // Prompt for balance - double
+    System.out.print("Enter Balance (double): ");
+    double b = sc.nextDouble();
+    sc.nextLine(); // Consume the newline character
+
+    // Prompt for ratePerSecond - double
+    System.out.print("Enter Rate Per Second (double): ");
+    double rps = sc.nextDouble();
+    sc.nextLine(); // Consume the newline character
+
+    // Prompt for circle - String
+    System.out.print("Enter Circle (String): ");
+    String c = sc.nextLine(); 
+            sims[i] = new IPA6(id, cn, b, rps, c);
+        }
+        String cir1 = sc.next();
+        sc.nextLine();
+        String cir2 = sc.next();
+
+        IPA6[] sim = transferCustomerCircle(sims, cir1, cir2);
+for (int i = 0; i < sim.length; i++) {
+    System.out.println("Sim Object " + (i + 1) + ":");
+    System.out.println("ID: " + sim[i].getId());
+    System.out.println("CN: " + sim[i].getCn());
+    System.out.println("B: " + sim[i].getB());
+    System.out.println("RPS: " + sim[i].getRps());
+    System.out.println("C: " + sim[i].getC());
+}
+sc.close();
     }
 
-    private static int totalNoOfRoomsBooked(IPA6[] motels, String facility) {
-        int totalRooms = 0;
-        for (int i = 0; i < motels.length; i++) {
-            if (motels[i].getCabFacility().equalsIgnoreCase(facility) && motels[i].getNoOfRoomsBooked()>5)
-                totalRooms+=motels[i].getNoOfRoomsBooked();
+    private static IPA6[] transferCustomerCircle(IPA6[] sims, String cir1, String cir2) {
+
+        IPA6[] retarr = new IPA6[4];
+        int c = 0;
+        for (int i = 0; i < sims.length; i++) {
+            if (sims[i].getC().equalsIgnoreCase(cir1)) {
+                sims[i].setC(cir2);
+                retarr[c] = sims[i];
+                c++;
+            }
+
         }
-        return totalRooms;
+
+        for (int i = 0; i < retarr.length; i++) {
+            for (int j = i + 1; j < retarr.length; j++) {
+                if (retarr[i].getRps() < retarr[j].getRps()) {
+                    IPA6 s = retarr[i];
+                    retarr[i] = retarr[j];
+                    retarr[j] = s;
+                }
+
+            }
+        }
+
+       return retarr;
     }
 }
 
 
+
+
+
+
+
+
+
 public class IPA6 {
-    private int motelId;
-    private String motelName;
-    private String dateOfBooking; // Format: dd-mon-yyyy
-    private int noOfRoomsBooked;
-    private String cabFacility;
-    private double totalBill;
+    private int id;
+    private String cn;
+    private double b;
+    private double rps;
+    private String c;
 
-    
-    public IPA6(int motelId, String motelName, String dateOfBooking, int noOfRoomsBooked, String cabFacility,
-            double totalBill) {
-        this.motelId = motelId;
-        this.motelName = motelName;
-        this.dateOfBooking = dateOfBooking;
-        this.noOfRoomsBooked = noOfRoomsBooked;
-        this.cabFacility = cabFacility;
-        this.totalBill = totalBill;
+    // Constructor
+    public IPA6(int id, String cn, double b, double rps, String c) {
+        this.id = id;
+        this.cn = cn;
+        this.b = b;
+        this.rps = rps;
+        this.c = c;
     }
 
-    // Getters
-    public int getMotelId() {
-        return motelId;
+    // Getter and Setter for id
+    public int getId() {
+        return id;
     }
 
-    public String getMotelName() {
-        return motelName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getDateOfBooking() {
-        return dateOfBooking;
+    // Getter and Setter for cn
+    public String getCn() {
+        return cn;
     }
 
-    public int getNoOfRoomsBooked() {
-        return noOfRoomsBooked;
+    public void setCn(String cn) {
+        this.cn = cn;
     }
 
-    public String getCabFacility() {
-        return cabFacility;
+    // Getter and Setter for b
+    public double getB() {
+        return b;
     }
 
-    public double getTotalBill() {
-        return totalBill;
+    public void setB(double b) {
+        this.b = b;
     }
 
-    // Setters
-    public void setMotelId(int motelId) {
-        this.motelId = motelId;
+    // Getter and Setter for rps
+    public double getRps() {
+        return rps;
     }
 
-    public void setMotelName(String motelName) {
-        this.motelName = motelName;
+    public void setRps(double rps) {
+        this.rps = rps;
     }
 
-    public void setDateOfBooking(String dateOfBooking) {
-        this.dateOfBooking = dateOfBooking;
+    // Getter and Setter for c
+    public String getC() {
+        return c;
     }
 
-    public void setNoOfRoomsBooked(int noOfRoomsBooked) {
-        this.noOfRoomsBooked = noOfRoomsBooked;
+    public void setC(String c) {
+        this.c = c;
     }
-
-    public void setCabFacility(String cabFacility) {
-        this.cabFacility = cabFacility;
-    }
-
-    public void setTotalBill(double totalBill) {
-        this.totalBill = totalBill;
-    }
-
 }
