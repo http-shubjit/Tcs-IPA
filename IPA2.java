@@ -4,6 +4,7 @@
 // //   footwearType=String
 // //   price =int
 
+
 // // the above attributes should be private.
 // // write getter and setter and parametrised constructor as required.
 
