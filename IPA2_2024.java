@@ -39,8 +39,9 @@
 // Use the searchLaptopByOsType method to print the laptopId and rating of the
 // matching laptops in descending order of laptopId. If no laptops match, print
 // "The given OS is not available."
+
 // Sample Input:
-// Copy code
+
 // 123
 // HP
 // Windows
@@ -69,3 +70,4 @@
 // 2
 // 126 4
 // 123 5
+
