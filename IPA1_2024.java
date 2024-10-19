@@ -51,17 +51,16 @@ import java.util.*;
  class IPA1_2024 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        List<Player> players = new ArrayList<>();
+        Player[] players=new Player[4];
 
         // Input player details
         for (int i = 0; i < 4; i++) {
-            System.out.println("Enter details for player " + (i + 1) + " (id, name, runs, type, matchType):");
             int id = sc.nextInt();
             String name = sc.next();
             int runs = sc.nextInt();
             String type = sc.next();
             String matchType = sc.next();
-            players.add(new Player(id, name, runs, type, matchType));
+            players[i]=new Player(id, name, runs, type, matchType);
         }
 
         // Find player with lowest runs
@@ -91,7 +90,7 @@ import java.util.*;
         sc.close();
     }
 
-    public static int findPlayerWithLowestRuns(List<Player> players, String playertype) {
+    public static int findPlayerWithLowestRuns(Player[] players, String playertype) {
       
         List<Integer> runsList = new ArrayList<>();
 
@@ -116,7 +115,7 @@ import java.util.*;
         }
     }
 
-    public static List<Integer> AssId(List<Player> pl, String m) {
+    public static List<Integer> AssId(Player [] pl, String m) {
         List<Integer> ids = new ArrayList<>();
 
         for (Player player : pl) {
