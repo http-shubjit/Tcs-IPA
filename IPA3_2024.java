@@ -158,3 +158,126 @@
 // String str = sc.nextLine(); -&gt; here we expect str to have value Savings.Instead it may be "".
 
 // If above issue is observed, then it is suggested to add one more explicit call to nextLine() after reading numeric value.
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+class Hotel {
+    private int hotelId;
+    private String hotelName;
+    private String dateOfBooking;
+    private int noOfRoomsBooked;
+    private String wifiFacility;
+    private double totalBill;
+
+    // Parameterized constructor
+    public Hotel(int hotelId, String hotelName, String dateOfBooking, int noOfRoomsBooked, String wifiFacility,
+            double totalBill) {
+        this.hotelId = hotelId;
+        this.hotelName = hotelName;
+        this.dateOfBooking = dateOfBooking;
+        this.noOfRoomsBooked = noOfRoomsBooked;
+        this.wifiFacility = wifiFacility;
+        this.totalBill = totalBill;
+    }
+
+    // Getters
+    public int getHotelId() {
+        return hotelId;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public String getDateOfBooking() {
+        return dateOfBooking;
+    }
+
+    public int getNoOfRoomsBooked() {
+        return noOfRoomsBooked;
+    }
+
+    public String getWifiFacility() {
+        return wifiFacility;
+    }
+
+    public double getTotalBill() {
+        return totalBill;
+    }
+}
+
+ class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Reading Hotel objects
+        Hotel[] hotels = new Hotel[4];
+
+        for (int i = 0; i < 4; i++) {
+            int hotelId = sc.nextInt();
+            sc.nextLine(); // Consume newline
+            String hotelName = sc.nextLine();
+            String dateOfBooking = sc.nextLine();
+            int noOfRoomsBooked = sc.nextInt();
+            sc.nextLine(); // Consume newline
+            String wifiFacility = sc.nextLine();
+            double totalBill = sc.nextDouble();
+            hotels[i] = new Hotel(hotelId, hotelName, dateOfBooking, noOfRoomsBooked, wifiFacility, totalBill);
+        }
+
+        // Reading month and wifi option
+        sc.nextLine(); // Consume newline
+        String month = sc.nextLine();
+        String wifiOption = sc.nextLine();
+
+        // Calling methods and displaying results
+        int roomsBooked = noOfRoomsBookedInGivenMonth(hotels, month);
+        if (roomsBooked > 0) {
+            System.out.println(roomsBooked);
+        } else {
+            System.out.println("No rooms booked in the given month");
+        }
+
+        int secondHighestHotel = searchHotelByWifiOption(hotels, wifiOption);
+        if (secondHighestHotel != 0) {
+            System.out.println(secondHighestHotel);
+        } else {
+            System.out.println("No such option available");
+        }
+
+        sc.close();
+    }
+
+    public static int noOfRoomsBookedInGivenMonth(Hotel[] hotels, String month) {
+        int totalRoomsBooked = 0;
+
+        for (Hotel hotel : hotels) {
+            if (hotel.getDateOfBooking().toLowerCase().contains(month.toLowerCase())) {
+                totalRoomsBooked += hotel.getNoOfRoomsBooked();
+            }
+        }
+
+        return totalRoomsBooked;
+    }
+
+    public static int searchHotelByWifiOption(Hotel[] hotels, String wifiOption) {
+        int[] id = new int[0];
+
+        for (Hotel hotel : hotels) {
+           
+            if (hotel.getWifiFacility().equalsIgnoreCase(wifiOption)) {
+                id = Arrays.copyOf(id, id.length + 1);
+                id[id.length - 1] = hotel.getHotelId();
+            }
+        }
+        Arrays.sort(id);
+        if (id.length > 0)
+            return id[id.length - 2];
+        else
+            return 0;
+        
+    }
+}
