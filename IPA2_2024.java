@@ -74,12 +74,48 @@
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
- class Solution {
+class Laptop {
+    private int laptopId;
+    private String brand;
+    private String os;
+    private double price;
+    private int rating;
+
+    // Parameterized constructor
+    public Laptop(int laptopId, String brand, String os, double price, int rating) {
+        this.laptopId = laptopId;
+        this.brand = brand;
+        this.os = os;
+        this.price = price;
+        this.rating = rating;
+    }
+
+    // Getters
+    public int getLaptopId() {
+        return laptopId;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+}
+
+class Solution {
 
     // Method to count laptops by brand
     public static int countOfLaptopsByBrand(Laptop[] laptops, String brand) {
@@ -94,12 +130,15 @@ import java.util.Scanner;
     }
 
     // Method to search laptops by OS type
-    public static Laptop[] searchLaptopByOsType(Laptop[] laptops, String os) {
-        List<Laptop> matchingLaptops = new ArrayList<>();
+    public static List<int[]> searchLaptopByOsType(Laptop[] laptops, String os) {
+        List<int[]> matchingLaptops = new ArrayList<>();
 
         for (Laptop laptop : laptops) {
             if (laptop.getOs().equalsIgnoreCase(os)) {
-                matchingLaptops.add(laptop);
+                int[] arr = new int[2];
+                arr[0] = laptop.getLaptopId();
+                arr[1] = laptop.getRating();
+                matchingLaptops.add(arr);
             }
         }
 
@@ -107,14 +146,13 @@ import java.util.Scanner;
             return null; // No laptops found
         } else {
             // Sort in descending order by laptopId
-            matchingLaptops.sort(Comparator.comparingInt(Laptop::getLaptopId).reversed());
-            return matchingLaptops.toArray(new Laptop[0]);
+            matchingLaptops.sort((a, b) -> Integer.compare(b[0], a[0]));
+            return matchingLaptops; // Directly return the list of int[]
         }
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
         Laptop[] laptops = new Laptop[4];
 
         // Read details for four laptops from user input
@@ -123,14 +161,19 @@ import java.util.Scanner;
             System.out.print("Laptop ID: ");
             int laptopId = scanner.nextInt();
             scanner.nextLine(); // Consume newline
+
             System.out.print("Brand: ");
             String brand = scanner.nextLine();
+
             System.out.print("OS: ");
             String os = scanner.nextLine();
+
             System.out.print("Price: ");
             double price = scanner.nextDouble();
+
             System.out.print("Rating: ");
             int rating = scanner.nextInt();
+
             laptops[i] = new Laptop(laptopId, brand, os, price, rating);
         }
 
@@ -152,74 +195,16 @@ import java.util.Scanner;
         }
 
         // Search for laptops by OS type
-        Laptop[] foundLaptops = searchLaptopByOsType(laptops, searchOs);
+        List<int[]> foundLaptops = searchLaptopByOsType(laptops, searchOs);
 
         if (foundLaptops != null) {
-            for (Laptop laptop : foundLaptops) {
-                System.out.println(laptop.getLaptopId() + " " + laptop.getRating());
+            for (int[] laptop : foundLaptops) {
+                System.out.println(laptop[0] + + laptop[1]); 
             }
         } else {
             System.out.println("The given OS is not available.");
         }
 
         scanner.close();
-    }
-}
-
-class Laptop {
-    private int laptopId;
-    private String brand;
-    private String os;
-    private double price;
-    private int rating;
-
-    // Parameterized constructor
-    public Laptop(int laptopId, String brand, String os, double price, int rating) {
-        this.laptopId = laptopId;
-        this.brand = brand;
-        this.os = os;
-        this.price = price;
-        this.rating = rating;
-    }
-
-    // Getters and Setters
-    public int getLaptopId() {
-        return laptopId;
-    }
-
-    public void setLaptopId(int laptopId) {
-        this.laptopId = laptopId;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getOs() {
-        return os;
-    }
-
-    public void setOs(String os) {
-        this.os = os;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 }
