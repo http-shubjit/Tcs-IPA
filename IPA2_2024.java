@@ -199,7 +199,7 @@ class Solution {
 
         if (foundLaptops != null) {
             for (int[] laptop : foundLaptops) {
-                System.out.println(laptop[0] + + laptop[1]); 
+                System.out.println(laptop[0] +" "+ laptop[1]); 
             }
         } else {
             System.out.println("The given OS is not available.");
