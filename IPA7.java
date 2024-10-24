@@ -73,3 +73,26 @@
 // 3 History
 // 2
 // 456
+
+
+
+class Book {
+    // id - int
+
+    // pages - int
+
+    // title - String
+
+    // author - String
+
+    // price - double
+    private int bookid;
+    private int pages;
+    private String title;
+    private String author;
+    private double price;
+    
+    public Book(int bookid, int pages, String title, String author, double price) {
+        
+    }
+}
