@@ -79,6 +79,7 @@
 // 456
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class Solution {
@@ -96,8 +97,8 @@ class Solution {
         }
         double price = sc.nextDouble();
         String title = sc.nextLine();
-        ArrayList<Book> re1 = findBookWithMaximumPrice(books, price);
-Book re2 = searchBookByTitle(books, title);
+        Book[] re1 = findBookWithMaximumPrice(books, price);
+        Book re2 = searchBookByTitle(books, title);
     }
 
     private static Book searchBookByTitle(Book[] books, String title) {
@@ -108,23 +109,25 @@ Book re2 = searchBookByTitle(books, title);
        return null;
     }
 
-    private static ArrayList<Book> findBookWithMaximumPrice(Book[] books, double price) {
-        ArrayList<Book> book = new ArrayList<>();
-
-        double maxprice = 0;
+    private static Book[] findBookWithMaximumPrice(Book[] books, double price) {
+        Book[] details = new Book[0];
+        double max = 0;
         for (int i = 0; i < books.length; i++) {
-            if (books[i].price > maxprice) {
-                maxprice = books[i].price;
-          }  
+            if (books[i].price >= max) {
+                max = books[i].price;
+            }
         }
         for (int i = 0; i < books.length; i++) {
-            if (maxprice == books[i].price)
-                book.add(books[i]);
+            if (books[i].price == max) {
+                details = Arrays.copyOf(details, details.length + 1);
+                details[details.length - 1] = books[i];
+            }
         }
-        if(book.size()>0)
-            return book;
-            else 
-                return null;
+        if (details.length > 0) {
+            return details;
+        } else {
+            return null;
+        }
 
     }
 }
