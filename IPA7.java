@@ -50,21 +50,25 @@
 // Bengali
 // Arijit
 // 525.50
+
 // 2
 // 456
 // English
 // Raju
 // 412.30
+
 // 3
 // 1022
 // History
 // Kaka
 // 525.50
+
 // 4
 // 125
 // geography
 // MN
 // 524
+
 // English
 
 // Output:
@@ -74,6 +78,56 @@
 // 2
 // 456
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+
+        Book[] books = new Book[4];
+        for (int i = 0; i < books.length; i++) {
+            int id = sc.nextInt();
+            int pages = sc.nextInt();
+            String title = sc.nextLine();
+            String author = sc.nextLine();
+            double price = sc.nextDouble();
+            books[i] = new Book(id, pages, title, author, price);
+        }
+        double price = sc.nextDouble();
+        String title = sc.nextLine();
+        ArrayList<Book> re1 = findBookWithMaximumPrice(books, price);
+Book re2 = searchBookByTitle(books, title);
+    }
+
+    private static Book searchBookByTitle(Book[] books, String title) {
+       for (int i = 0; i < books.length; i++) {
+        if(books[i].title.equalsIgnoreCase(title))
+            return books[i];
+       }
+       return null;
+    }
+
+    private static ArrayList<Book> findBookWithMaximumPrice(Book[] books, double price) {
+        ArrayList<Book> book = new ArrayList<>();
+
+        double maxprice = 0;
+        for (int i = 0; i < books.length; i++) {
+            if (books[i].price > maxprice) {
+                maxprice = books[i].price;
+          }  
+        }
+        for (int i = 0; i < books.length; i++) {
+            if (maxprice == books[i].price)
+                book.add(books[i]);
+        }
+        if(book.size()>0)
+            return book;
+            else 
+                return null;
+
+    }
+}
 
 
 class Book {
@@ -86,13 +140,17 @@ class Book {
     // author - String
 
     // price - double
-    private int bookid;
-    private int pages;
-    private String title;
-    private String author;
-    private double price;
+     int bookid;
+     int pages;
+     String title;
+     String author;
+     double price;
     
     public Book(int bookid, int pages, String title, String author, double price) {
-        
+        this.bookid = bookid;
+        this.pages = pages;
+        this.title = title;
+        this.author = author;
+        this.price = price;  
     }
 }
