@@ -195,3 +195,16 @@ class Employee {
         return companyTransport;
     }
 }
+
+//**  */ findSecondLargest
+// int largest = Integer.MIN_VALUE; // Initialize to minimum possible value
+//     int secondLargest = Integer.MIN_VALUE; // Initialize to minimum possible value
+
+//     for (int num : arr) {
+//         if (num > largest) {
+//             secondLargest = largest; // Update second largest
+//             largest = num;           // Update largest
+//         } else if (num > secondLargest && num < largest) {
+//             secondLargest = num;     // Update second largest
+//         }
+//     }
