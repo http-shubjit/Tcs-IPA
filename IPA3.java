@@ -109,7 +109,7 @@
 //         Arrays.sort(score);
 
 //       double second=score[students.length-1];
-//       for (int i = students.length; i >= 0; i--) {
+//       for (int i = students.length-1; i >= 0; i--) {
 //           if (score[i] != second) {
 //               second = score[i];
 //               break;
