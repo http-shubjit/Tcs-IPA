@@ -72,3 +72,126 @@
 // 2
 // 1003
 // Uma
+
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+ class MyClass {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Employee[] emp = new Employee[4];
+
+        // Input for Employee objects
+        for (int i = 0; i < emp.length; i++) {
+            int id = sc.nextInt();
+            sc.nextLine(); // Consume newline
+            String name = sc.nextLine();
+            String branch = sc.nextLine();
+            double rating = sc.nextDouble();
+            boolean transport = sc.nextBoolean();
+            sc.nextLine(); // Consume newline
+
+            emp[i] = new Employee(id, name, branch, rating, transport);
+        }
+
+        // Read branch for count method
+        String branchInput = sc.nextLine();
+
+        // Count employees using company transport in the given branch
+        int count = findCountOfEmployeesUsingCompTransport(emp, branchInput);
+        if (count > 0) {
+            System.out.println(count);
+        } else {
+            System.out.println("No such Employees");
+        }
+
+        // Find employee with second highest rating who is not using company transport
+        Employee secondHighestEmployee = findEmployeeWithSecondHighestRating(emp);
+        if (secondHighestEmployee != null) {
+            System.out.println(secondHighestEmployee.getEmployeeId());
+            System.out.println(secondHighestEmployee.getName());
+        } else {
+            System.out.println("All Employees using company transport");
+        }
+
+        sc.close();
+    }
+
+    public static int findCountOfEmployeesUsingCompTransport(Employee[] employees, String branch) {
+        int count = 0;
+
+        for (Employee emp : employees) {
+            if (emp.getBranch().equals(branch) && emp.isCompanyTransport()) {
+                count++;
+            }
+        }
+
+        return count; // Return the count
+    }
+
+    public static Employee findEmployeeWithSecondHighestRating(Employee[] employees) {
+        double[] rat = new double[0];
+        for (int i = 0; i < employees.length; i++) {
+            if (!employees[i].isCompanyTransport()) {
+                rat = Arrays.copyOf(rat, rat.length + 1);
+                rat[rat.length - 1] = employees[i].getRating();
+            }
+        }
+        
+        Arrays.sort(rat);
+        double second = rat[rat.length - 1];
+        for (int i = rat.length - 1; i >= 0; i--) {
+            if (second != rat[i]) {
+                second = rat[i];
+                break;
+            }
+
+        }
+        for (int i = 0; i < employees.length; i++) {
+            if(employees[i].getRating()==second)
+                return employees[i];
+            
+        }
+        return null;
+    }
+}
+class Employee {
+    // Attributes
+    private int employeeId;
+    private String name;
+    private String branch;
+    private double rating;
+    private boolean companyTransport;
+
+    // Constructor
+    public Employee(int employeeId, String name, String branch, double rating, boolean companyTransport) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.branch = branch;
+        this.rating = rating;
+        this.companyTransport = companyTransport;
+    }
+
+    // Getter methods
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public boolean isCompanyTransport() {
+        return companyTransport;
+    }
+}
