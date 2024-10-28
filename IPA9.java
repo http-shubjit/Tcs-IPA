@@ -68,8 +68,116 @@
 // 45
 // 102
 
+import java.util.*;
+class Solution {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+
+        Player[] players = new Player[4];
+        for (int i = 0; i < 4; i++) {
+            int id = sc.nextInt();
+            sc.nextLine();
+            String skill = sc.nextLine();
+            String level = sc.nextLine();
+            int point = sc.nextInt();
+            players[i] = new Player(id, skill, level, point);
+        }
+        String skill = sc.nextLine();
+        int ans1 = Ans1(players, skill);
+if(ans1>0)
+System.out.println(ans1);
+else
+System.out.println("The given Skill is not available");
+        
+        String level = sc.nextLine();
+        int[] ans2 = Ans2(players, level, skill);
+        if (ans2.length>0)
+        {
+            for (int i = 0; i < ans2.length; i++) {
+                System.out.println(ans2[i]);
+            }
+        }
+        else {
+            System.out.println("No player is available with specified level, skill and eligibility points");
+        }
+
+
+    }
+    
+    private static int Ans1(Player[] p, String s) {
+
+        int count = 0;
+        for (int i = 0; i < p.length; i++) {
+            if (p[i].getSkill().equalsIgnoreCase(s))
+                count+=p[i].getPoint();
+        }
+        return count;
+    }
+    
+    private static int[] Ans2(Player[] p, String l, String s) {
+        int[] arr = new int[0];
+        for (int i = 0; i < p.length; i++) {
+            if (p[i].getPoint() >= 20 && p[i].getLevel().equalsIgnoreCase(l) && p[i].getSkill().equalsIgnoreCase(l)) {
+                arr = Arrays.copyOf(arr, arr.length + 1);
+                arr[arr.length - 1] = p[i].getId();
+            }
+        }
+if(arr.length>0)
+    return arr;
+    else
+        return null;
+    }
+}
+
 
 
 class Player {
     
+
+    private int id;
+    private String skill;
+    private String level;
+    private int point;
+
+    Player(int id, String skill, String level, int point) {
+        this.id = id;
+        this.skill = skill;
+        this.level = level;
+        this.point = point;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
+    public String getSkill() {
+        return skill;
+    }
+
+    public void setSkill(String skill) {
+        this.skill = skill;
+    }
+    
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
+   }
+    
+
 }
