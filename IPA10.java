@@ -75,3 +75,72 @@
 // ---------
 // 100
 // 200
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Medicine[] medicines = new Medicine[4];
+        for (int i = 0; i < 4; i++) {
+            String a = sc.nextLine();
+            String b = sc.nextLine();
+            String c = sc.nextLine();
+            int d = sc.nextInt();
+            medicines[i] = new Medicine(a, b, c, d);
+
+        }
+        String disease=sc.nextLine();
+        int[] ans = Ans(medicines, disease);
+    }
+
+    private static int[] Ans(Medicine[] medicines, String disease) {
+        int[] arr = new int[0];
+        for (int i = 0; i < medicines.length; i++) {
+            if (medicines[i].getC().equalsIgnoreCase(disease)) {
+                arr = Arrays.copyOf(arr, arr.length + 1);
+                arr[arr.length - 1] = medicines[i].getD();
+            }
+        }
+         Arrays.sort(arr);
+         return arr.length>0?arr:null;
+
+    }
+}
+
+class Medicine {
+    // MedicineName - String
+    // batch - String
+    // disease - String
+    // price - int
+    private String a;
+    private String b;
+    private String c;
+    private int d;
+
+    Medicine(String a, String b, String c, int d) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+    }
+
+    public String getA()
+    {
+        return a;
+    }
+
+    public String getB() {
+        return b;
+    }
+
+    public String getC()
+    {
+        return c;
+    }
+
+    public int getD() {
+        return d;
+    }
+}
