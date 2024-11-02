@@ -94,3 +94,42 @@
 // -----------
 // 1900
 // Mercedez::B2
+
+class AutonomousCar {
+   
+   private int a;
+   private String b;
+   private int c;
+   private int d;
+   private String e;
+
+    AutonomousCar(int a, String b, int c, int d, String e) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
+        this.e = e;
+    }
+
+    public int getA() {
+        return a;
+    }
+
+    public String getB() {
+        return b;
+    }
+
+    public int getC() {
+        return c;
+    }
+
+    public int getD() {
+        return d;
+    }
+
+    public String getE() {
+        return e;
+    }
+
+    
+}
