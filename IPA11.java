@@ -94,6 +94,24 @@
 // -----------
 // 1900
 // Mercedez::B2
+import java.util.*;
+class Solution {
+    public static void main(String args[]) {
+        AutonomousCar[] acars = new AutonomousCar[4];
+        Scanner sc=new Scanner(System.in);
+        for (int i = 0; i < 4; i++) {
+            int a = sc.nextInt();
+            sc.nextLine();
+            String b = sc.nextLine();
+            int c = sc.nextInt();
+            sc.nextLine();
+            int d = sc.nextInt();
+            sc.nextLine();
+            String e = sc.nextLine();
+        }
+    }
+}
+
 
 class AutonomousCar {
    
