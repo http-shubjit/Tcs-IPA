@@ -113,7 +113,7 @@ class Solution {
         String env = sc.nextLine();
         String brand = sc.nextLine();
         int res1 = fun1(cars, env);
-        String res2 = fun2(cars, brand);
+        AutonomousCar res2 = fun2(cars, brand);
     }
 
     public static int fun1(AutonomousCar[] cars, String env) {
@@ -124,22 +124,21 @@ class Solution {
         }
         return count;
     }
-    public static String fun2(AutonomousCar[] cars,String brand )
+    public static AutonomousCar fun2(AutonomousCar[] cars,String brand )
     {
 
     for (int i = 0; i < cars.length; i++) {
         if (cars[i].getB().equalsIgnoreCase(brand)) {
-
             String grade = "";
             int rating = (cars[i].getC() * 100) / cars[i].getD();
             if (rating >= 80) {
-                grade = cars[i].getC() + "::" + "A1";
-                return grade;
+                cars[i].setGrade("A1");
             } else {
-                grade = cars[i].getC() + "::" + "B2";
-                return grade;
+
+                cars[i].setGrade("B2");
             }
         }
+        return cars[i];
         
     }
     return null;
@@ -155,6 +154,7 @@ class AutonomousCar {
    private int c;
    private int d;
    private String e;
+ private String grade;
 
     AutonomousCar(int a, String b, int c, int d, String e) {
         this.a = a;
@@ -162,6 +162,7 @@ class AutonomousCar {
         this.c = c;
         this.d = d;
         this.e = e;
+        this.grade = "";
     }
 
     public int getA() {
@@ -182,6 +183,14 @@ class AutonomousCar {
 
     public String getE() {
         return e;
+    }
+    
+    public String getGrade() {
+        return grade;
+    }
+
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     
