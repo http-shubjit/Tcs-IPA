@@ -97,8 +97,8 @@
 import java.util.*;
 class Solution {
     public static void main(String args[]) {
-        AutonomousCar[] acars = new AutonomousCar[4];
-        Scanner sc=new Scanner(System.in);
+        AutonomousCar[] cars = new AutonomousCar[4];
+        Scanner sc = new Scanner(System.in);
         for (int i = 0; i < 4; i++) {
             int a = sc.nextInt();
             sc.nextLine();
@@ -108,7 +108,21 @@ class Solution {
             int d = sc.nextInt();
             sc.nextLine();
             String e = sc.nextLine();
+            cars[i] = new AutonomousCar(a, b, c, d, e);
         }
+        String env = sc.nextLine();
+        String brand = sc.nextLine();
+        int res1 = fun1(cars, env);
+    }
+
+    public static int fun1(AutonomousCar[] cars, String env) {
+        int count = 0;
+        for (int i = 0; i < cars.length; i++) {
+            if (cars[i].getE().equalsIgnoreCase(env))
+                count += cars[i].getD();
+        }
+        return count;
+        
     }
 }
 
