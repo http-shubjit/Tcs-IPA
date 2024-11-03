@@ -113,6 +113,7 @@ class Solution {
         String env = sc.nextLine();
         String brand = sc.nextLine();
         int res1 = fun1(cars, env);
+        String res2 = fun2(cars, brand);
     }
 
     public static int fun1(AutonomousCar[] cars, String env) {
@@ -122,8 +123,28 @@ class Solution {
                 count += cars[i].getD();
         }
         return count;
+    }
+    public static String fun2(AutonomousCar[] cars,String brand )
+    {
+
+    for (int i = 0; i < cars.length; i++) {
+        if (cars[i].getB().equalsIgnoreCase(brand)) {
+
+            String grade = "";
+            int rating = (cars[i].getC() * 100) / cars[i].getD();
+            if (rating >= 80) {
+                grade = cars[i].getC() + "::" + "A1";
+                return grade;
+            } else {
+                grade = cars[i].getC() + "::" + "B2";
+                return grade;
+            }
+        }
         
     }
+    return null;
+}    
+
 }
 
 
