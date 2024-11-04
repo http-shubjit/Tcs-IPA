@@ -1,3 +1,17 @@
+/*
+ * Write a Java program to check if a given number is an Armstrong number or
+ * not.
+ * 
+ * Here's an example of the expected input and output:
+ * 
+ * Input number: 153
+ * Output: "Yes, the number is an Armstrong number."
+ * 
+ */
+
+ 
+
+
 // Create class Movie with below attributes: 
 
 // movieName - String 
