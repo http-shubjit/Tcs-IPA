@@ -1,39 +1,4 @@
 
-/*
- * Write a Java program to check if a given number is an Armstrong number or
- * not.
- * 
- * Here's an example of the expected input and output:
- * 
- * Input number: 153=1^3+5^3+3^3=153
- * Input number:1634= 1^4+6^4+3^4+4^4=1+1296+81+256=1634
- * Output: "Yes, the number is an Armstrong number."
- * 
- * 
- */
-import java.util.*;
-class Solution {
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-        int copyofnum=num;
-        int sum = 0;
-        int totaldigit = Integer.toString(num).length();
-        while (num > 0) {
-            int rem = num % 10;
-            sum += Math.pow(rem, totaldigit);
-            num /= 10;
-        }
-        if(sum==copyofnum)
-        {
-            System.out.println("Yes");
-        }
-        else{
-            System.out.println("No");
-        }
-    }
-}
-
 
 
 // Create class Movie with below attributes: 
