@@ -135,3 +135,32 @@
 // }
     
 // }
+
+//4
+// write a Java program that compresses a given string by counting the consecutive occurrences of each character.
+// Input: aabbbcc
+// Output: a2b3c2
+// Input: abbccc
+// Output: a1b2c3
+
+import java.util.Scanner;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String res = "";
+        for (int i = 0; i < str.length(); i++) {
+            int count = 1;
+            char ch = str.charAt(i);
+            
+            while (i+1 < str.length() && ch == str.charAt(i + 1)) {
+                count++;
+                i++;
+               
+            }
+            res += ch + count;
+        }
+       System.out.println(res); 
+    }
+}
