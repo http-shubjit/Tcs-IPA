@@ -136,31 +136,79 @@
     
 // }
 
-//4
+//4: 
 // write a Java program that compresses a given string by counting the consecutive occurrences of each character.
 // Input: aabbbcc
 // Output: a2b3c2
 // Input: abbccc
 // Output: a1b2c3
 
-import java.util.Scanner;
+// import java.util.Scanner;
 
-class Solution {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String str = sc.nextLine();
-        String res = "";
-        for (int i = 0; i < str.length(); i++) {
-            int count = 1;
-            char ch = str.charAt(i);
+// class Solution {
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         String str = sc.nextLine();
+//         String res = "";
+//         for (int i = 0; i < str.length(); i++) {
+//             int count = 1;
+//             char ch = str.charAt(i);
             
-            while (i+1 < str.length() && ch == str.charAt(i + 1)) {
-                count++;
-                i++;
+//             while (i+1 < str.length() && ch == str.charAt(i + 1)) {
+//                 count++;
+//                 i++;
                
-            }
-            res += ch + count;
-        }
-       System.out.println(res); 
-    }
-}
+//             }
+//             res += ch + count;
+//         }
+//        System.out.println(res); 
+//     }
+// }
+
+//5: 
+// Valid Palindrome
+// Attempted
+// Easy
+// Topics
+// Companies
+// A phrase
+// is a palindrome if,
+// after converting
+// all uppercase
+// letters into
+// lowercase letters
+// and removing
+// all non-alphanumeric characters, it
+// reads the
+// same forward
+// and backward.
+// Alphanumeric characters
+// include letters
+// and numbers.
+
+// Given a
+// string s,return true if
+// it is
+// a palindrome, or false otherwise.
+
+// Example 1:
+
+// Input:s="A man, a plan, a canal: Panama"Output:true Explanation:"amanaplanacanalpanama"
+// is a palindrome.Example 2:
+
+// Input:s="race a car"Output:false Explanation:"raceacar"
+// is not
+// a palindrome.Example 3:
+
+// Input:s=" "Output:true Explanation:
+// s is
+// an empty string""
+// after removing non-
+// alphanumeric characters.
+// Since an
+// empty string
+// reads the
+// same forward
+// and backward, it
+// is a palindrome
+// .
